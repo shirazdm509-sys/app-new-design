@@ -436,12 +436,14 @@ function applySettingsObject(s) {
     const subEl = document.querySelector('#screen-home header h2');
     if (nameEl && s.site_name) nameEl.textContent = s.site_name;
     if (subEl && s.site_subtitle) subEl.textContent = s.site_subtitle;
-    if (s.site_name) document.title = s.site_name;
+    if (s.site_name) { document.title = s.site_name; const dtName = document.getElementById('dt-brand-name'); if (dtName) dtName.textContent = s.site_name; const sdName = document.getElementById('sd-brand-name'); if (sdName) sdName.textContent = s.site_name; }
     if (s.logo_url) {
         const logoWrapper = document.querySelector('#screen-home header .w-11');
         if (logoWrapper) logoWrapper.innerHTML = `<img src="${s.logo_url}" class="w-full h-full object-contain">`;
         const sdLogo = document.getElementById('sd-logo');
         if (sdLogo) sdLogo.innerHTML = `<img src="${s.logo_url}" style="width:100%;height:100%;object-fit:contain;border-radius:50%;">`;
+        const dtLogo = document.getElementById('dt-logo');
+        if (dtLogo) dtLogo.innerHTML = `<img src="${s.logo_url}" style="width:100%;height:100%;object-fit:contain;border-radius:50%;">`;
     }
     if (s.favicon_url) {
         let link = document.querySelector("link[rel~='icon']");

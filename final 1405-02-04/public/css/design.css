@@ -391,3 +391,134 @@ body:not(.global-dark) #global-search-modal .border-gray-200 { border-color: var
     width: 100% !important;
   }
 }
+
+/* ─── Tablet Side Rail (640–1023px): light cream instead of dark green ─── */
+@media (min-width: 640px) and (max-width: 1023px) {
+  body:not(.global-dark) #desktop-sidebar {
+    background: var(--card) !important;
+    border-left: 1px solid var(--border-soft) !important;
+  }
+  body:not(.global-dark) #desktop-sidebar .sdi,
+  body:not(.global-dark) #desktop-sidebar #sd-footer .sdi {
+    color: var(--ink-2) !important;
+  }
+  body:not(.global-dark) #desktop-sidebar .sdi span {
+    color: var(--ink-2) !important;
+  }
+  body:not(.global-dark) #desktop-sidebar .sdi svg,
+  body:not(.global-dark) #desktop-sidebar .sdi i {
+    color: var(--ink-3) !important;
+  }
+  body:not(.global-dark) #desktop-sidebar .sdi:hover {
+    background: var(--bg-soft) !important;
+    color: var(--ink) !important;
+  }
+  body:not(.global-dark) #desktop-sidebar .sdi:hover svg,
+  body:not(.global-dark) #desktop-sidebar .sdi:hover i {
+    color: var(--ink-2) !important;
+  }
+  /* Active tab: green-wash background + green indicator bar */
+  body:not(.global-dark) #desktop-sidebar .nav-item.sdi.active {
+    background: var(--green-wash) !important;
+    position: relative;
+  }
+  body:not(.global-dark) #desktop-sidebar .nav-item.sdi.active::before {
+    content: '';
+    position: absolute;
+    right: -10px; top: 50%; transform: translateY(-50%);
+    width: 3px; height: 20px;
+    background: var(--green);
+    border-radius: 2px;
+  }
+  body:not(.global-dark) #desktop-sidebar .nav-item.sdi.active svg,
+  body:not(.global-dark) #desktop-sidebar .nav-item.sdi.active i {
+    color: var(--green-deep) !important;
+  }
+  body:not(.global-dark) #desktop-sidebar .nav-item.sdi.active span {
+    color: var(--green-deep) !important;
+    font-weight: 700 !important;
+  }
+  /* Brand section */
+  body:not(.global-dark) #sd-brand { border-bottom-color: var(--border-soft) !important; }
+  body:not(.global-dark) #sd-brand-name { color: var(--ink) !important; font-size: 13px !important; }
+  body:not(.global-dark) #sd-brand-sub { color: var(--ink-2) !important; }
+}
+
+/* ─── Desktop Top Nav Layout (≥1024px) ─── */
+@media (min-width: 1024px) {
+  #app-wrapper { flex-direction: column !important; }
+  #desktop-sidebar { display: none !important; }
+  #desktop-topnav { display: flex !important; }
+  #screens-wrapper { max-width: 100% !important; }
+  #bottom-nav { display: none !important; }
+  #screen-home > header { display: none !important; }
+  #home-scroll-content { padding-top: 0 !important; }
+}
+
+/* ─── Desktop Top Nav Tab styles ─── */
+.dt-tab {
+  padding: 8px 14px;
+  border-radius: var(--r-sm);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-2);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+  flex: none;
+}
+.dt-tab:hover { background: var(--bg-deep); color: var(--ink); }
+.dt-tab.active {
+  background: var(--green-wash) !important;
+  color: var(--green-deep) !important;
+  font-weight: 700 !important;
+}
+
+/* ─── Lectures Gradient Category Cards ─── */
+.lect-cat-card {
+  aspect-ratio: 1/1.1;
+  border-radius: var(--r-md);
+  color: #fff;
+  padding: 16px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--sh-2);
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.lect-cat-card:hover { transform: translateY(-2px); box-shadow: var(--sh-3); }
+.lect-cat-card:active { transform: scale(0.96); }
+
+/* ─── Media Folder Category Cards ─── */
+.media-folder-card {
+  border-radius: var(--r-md);
+  overflow: hidden;
+  background: var(--card);
+  border: 1px solid var(--border-soft);
+  padding: 14px;
+  position: relative;
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: box-shadow 0.15s, border-color 0.15s;
+}
+.media-folder-card:hover { box-shadow: var(--sh-2); border-color: var(--green-soft); }
+.media-folder-card:active { transform: scale(0.97); }
+
+/* ─── Reader: apply warm theme to overlay ─── */
+body:not(.global-dark) #reader-overlay.theme-light {
+  background: var(--bg-soft) !important;
+}
+body:not(.global-dark) #reader-overlay #reader-header,
+body:not(.global-dark) #reader-overlay #reader-footer {
+  background: rgba(254,252,249,0.94) !important;
+  border-color: var(--border-soft) !important;
+}

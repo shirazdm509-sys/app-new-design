@@ -269,28 +269,40 @@ async function loadVideoCategories(parentId, parentName) {
         const cats = await res.json();
         _videoCatsLoaded = true;
 
-        view.className = _viewClasses('cats') + ' w-full';
+        view.className = 'grid grid-cols-2 gap-3 w-full';
         if(cats && cats.length > 0) {
-            const colors = ['from-rose-500 to-rose-700','from-blue-500 to-blue-700','from-violet-500 to-violet-700','from-amber-500 to-amber-700','from-teal-500 to-teal-700','from-emerald-500 to-emerald-700','from-pink-500 to-pink-700','from-indigo-500 to-indigo-700'];
+            // Folder color tones from handoff design
+            const folderTones = [
+                { a: 'oklch(0.72 0.08 35)', b: 'oklch(0.55 0.08 35)' },
+                { a: 'oklch(0.68 0.08 200)', b: 'oklch(0.48 0.08 210)' },
+                { a: 'oklch(0.52 0.08 155)', b: 'oklch(0.38 0.06 158)' },
+                { a: 'oklch(0.70 0.09 290)', b: 'oklch(0.50 0.09 290)' },
+                { a: 'oklch(0.72 0.09 75)', b: 'oklch(0.55 0.09 70)' },
+                { a: 'oklch(0.72 0.09 125)', b: 'oklch(0.50 0.08 130)' },
+            ];
             view.innerHTML = cats.map((cat, i) => {
-                const grad = colors[i % colors.length];
-                const coverHtml = cat.cover ? `<img src="${cat.cover}" class="w-full h-full object-cover">` : `<div class="w-full h-full bg-gradient-to-br ${grad} flex items-center justify-center"><i class="fas fa-film text-white text-3xl opacity-80"></i></div>`;
+                const tm = folderTones[i % folderTones.length];
                 const badge = cat.sub_count > 0 ? `${cat.sub_count} زیردسته` : `${cat.video_count} ویدیو`;
                 const clickFn = cat.sub_count > 0 ? `videoNavToSub(${cat.id},'${cat.name.replace(/'/g,"\\'")}')` : `loadVideoList(${cat.id},'${cat.name.replace(/'/g,"\\'")}',${cat.video_count})`;
                 if (_mediaViewMode === 'list') return `
-                <div onclick="${clickFn}" class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 cursor-pointer hover:bg-gray-50 transition-all active:scale-[0.98] flex items-center gap-3 p-3">
-                    <div class="w-20 h-12 rounded-xl overflow-hidden shrink-0 bg-gray-900 relative">${coverHtml}</div>
-                    <div class="flex-1 min-w-0"><h3 class="font-black text-xs text-gray-800 line-clamp-1">${cat.name}</h3><p class="text-[10px] text-gray-400 mt-0.5">${badge}</p></div>
-                    <i class="fas fa-chevron-left text-gray-300 text-xs shrink-0"></i>
-                </div>`;
-                const hasFolder = cat.sub_count > 0 ? `<div class="absolute top-2 right-2 bg-white/20 backdrop-blur-sm rounded-lg px-1.5 py-0.5"><i class="fas fa-folder text-white text-[10px] ml-1"></i><span class="text-white text-[9px] font-bold">${cat.sub_count}</span></div>` : '';
-                return `
-                <div onclick="${clickFn}" class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 cursor-pointer hover:shadow-lg transition-all active:scale-95 flex flex-col">
-                    <div class="w-full aspect-video overflow-hidden relative">
-                        ${coverHtml}${hasFolder}
-                        <div class="absolute inset-0 flex items-center justify-center"><div class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-lg"><i class="fas fa-${cat.sub_count>0?'folder-open':'play'} text-white text-lg ${cat.sub_count>0?'':'mr-[-2px]'}"></i></div></div>
+                <div onclick="${clickFn}" style="background:var(--card);border-radius:var(--r-md);border:1px solid var(--border-soft);cursor:pointer;display:flex;align-items:center;gap:12px;padding:12px;" class="active:scale-[0.98] transition-all col-span-2">
+                    <div style="width:46px;height:36px;position:relative;flex-shrink:0;">
+                        <div style="position:absolute;inset:0;border-radius:6px 6px 8px 8px;background:linear-gradient(135deg,${tm.a},${tm.b});"></div>
+                        <div style="position:absolute;top:-4px;right:4px;width:18px;height:6px;border-radius:3px 3px 0 0;background:${tm.b};"></div>
                     </div>
-                    <div class="px-3 py-2"><h3 class="font-black text-xs text-gray-800 line-clamp-1">${cat.name}</h3><p class="text-[10px] text-gray-400 mt-0.5">${badge}</p></div>
+                    <div style="flex:1;min-width:0;"><h3 style="font-size:13px;font-weight:700;color:var(--ink);line-height:1.4;">${cat.name}</h3><p style="font-size:11px;color:var(--ink-3);margin-top:2px;">${badge}</p></div>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" style="color:var(--ink-4);flex-shrink:0;"><path d="M15 6l-6 6 6 6"/></svg>
+                </div>`;
+                return `
+                <div onclick="${clickFn}" class="media-folder-card">
+                    <div style="width:46px;height:36px;position:relative;">
+                        <div style="position:absolute;inset:0;border-radius:6px 6px 8px 8px;background:linear-gradient(135deg,${tm.a},${tm.b});box-shadow:0 4px 10px ${tm.b}40;"></div>
+                        <div style="position:absolute;top:-4px;right:4px;width:18px;height:6px;border-radius:3px 3px 0 0;background:${tm.b};"></div>
+                    </div>
+                    <div>
+                        <div style="font-size:14px;font-weight:700;color:var(--ink);line-height:1.5;">${cat.name}</div>
+                        <div style="font-size:11px;color:var(--ink-3);margin-top:4px;">${badge}</div>
+                    </div>
                 </div>`;
             }).join('');
         } else {
@@ -818,30 +830,39 @@ async function loadAudioCategories(parentId, parentName) {
         const cats = await res.json();
         _audioCatsLoaded = true;
 
-        view.className = _viewClasses('cats') + ' w-full';
+        view.className = 'grid grid-cols-2 gap-3 w-full';
         if(cats && cats.length > 0) {
-            const colors = ['from-brand-500 to-brand-700','from-violet-500 to-violet-700','from-rose-500 to-rose-700','from-amber-500 to-amber-700','from-emerald-500 to-emerald-700','from-blue-500 to-blue-700','from-pink-500 to-pink-700','from-teal-500 to-teal-700'];
+            // Folder color tones from handoff design
+            const folderTones = [
+                { a: 'oklch(0.68 0.08 200)', b: 'oklch(0.48 0.08 210)' },
+                { a: 'oklch(0.52 0.08 155)', b: 'oklch(0.38 0.06 158)' },
+                { a: 'oklch(0.72 0.09 75)', b: 'oklch(0.55 0.09 70)' },
+                { a: 'oklch(0.70 0.09 290)', b: 'oklch(0.50 0.09 290)' },
+                { a: 'oklch(0.72 0.08 35)', b: 'oklch(0.55 0.08 35)' },
+                { a: 'oklch(0.72 0.09 125)', b: 'oklch(0.50 0.08 130)' },
+            ];
             view.innerHTML = cats.map((cat, i) => {
-                const grad = colors[i % colors.length];
-                const coverHtml = cat.cover ? `<img src="${cat.cover}" class="w-full h-full object-cover">` : `<div class="w-full h-full bg-gradient-to-br ${grad} flex items-center justify-center"><i class="fas fa-headphones text-white text-3xl opacity-80"></i></div>`;
+                const tm = folderTones[i % folderTones.length];
                 const badge = cat.sub_count > 0 ? `${cat.sub_count} زیردسته` : `${cat.track_count} صوت`;
                 const clickFn = cat.sub_count > 0 ? `audioNavToSub(${cat.id},'${cat.name.replace(/'/g,"\\'")}')` : `loadAudioPlaylist(${cat.id},'${cat.name.replace(/'/g,"\\'")}',${cat.track_count})`;
                 if (_mediaViewMode === 'list') return `
-                <div onclick="${clickFn}" class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 cursor-pointer hover:bg-gray-50 transition-all active:scale-[0.98] flex items-center gap-3 p-3">
-                    <div class="w-12 h-12 rounded-xl overflow-hidden shrink-0 bg-gray-100">${coverHtml}</div>
-                    <div class="flex-1 min-w-0"><h3 class="font-bold text-xs text-gray-800 line-clamp-1">${cat.name}</h3><p class="text-[10px] text-gray-400 mt-0.5">${badge}</p></div>
-                    <i class="fas fa-chevron-left text-gray-300 text-xs shrink-0"></i>
+                <div onclick="${clickFn}" style="background:var(--card);border-radius:var(--r-md);border:1px solid var(--border-soft);cursor:pointer;display:flex;align-items:center;gap:12px;padding:12px;" class="active:scale-[0.98] transition-all col-span-2">
+                    <div style="width:46px;height:36px;position:relative;flex-shrink:0;">
+                        <div style="position:absolute;inset:0;border-radius:6px 6px 8px 8px;background:linear-gradient(135deg,${tm.a},${tm.b});"></div>
+                        <div style="position:absolute;top:-4px;right:4px;width:18px;height:6px;border-radius:3px 3px 0 0;background:${tm.b};"></div>
+                    </div>
+                    <div style="flex:1;min-width:0;"><h3 style="font-size:13px;font-weight:700;color:var(--ink);line-height:1.4;">${cat.name}</h3><p style="font-size:11px;color:var(--ink-3);margin-top:2px;">${badge}</p></div>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" style="color:var(--ink-4);flex-shrink:0;"><path d="M15 6l-6 6 6 6"/></svg>
                 </div>`;
-                const hasFolder = cat.sub_count > 0 ? `<div class="absolute top-2 right-2 bg-white/20 backdrop-blur-sm rounded-lg px-1.5 py-0.5"><i class="fas fa-folder text-white text-[10px] ml-1"></i><span class="text-white text-[9px] font-bold">${cat.sub_count}</span></div>` : '';
-                const aspectClass = _mediaViewMode === 'large' ? 'aspect-video' : 'aspect-square';
                 return `
-                <div onclick="${clickFn}" class="bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 cursor-pointer hover:shadow-lg transition-all active:scale-95 flex flex-col">
-                    <div class="w-full ${aspectClass} overflow-hidden relative">
-                        ${coverHtml}${hasFolder}
-                        <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/70 to-transparent p-3">
-                            <h3 class="font-black text-xs text-white line-clamp-1">${cat.name}</h3>
-                            <p class="text-[10px] text-white/70 mt-0.5">${badge}</p>
-                        </div>
+                <div onclick="${clickFn}" class="media-folder-card">
+                    <div style="width:46px;height:36px;position:relative;">
+                        <div style="position:absolute;inset:0;border-radius:6px 6px 8px 8px;background:linear-gradient(135deg,${tm.a},${tm.b});box-shadow:0 4px 10px ${tm.b}40;"></div>
+                        <div style="position:absolute;top:-4px;right:4px;width:18px;height:6px;border-radius:3px 3px 0 0;background:${tm.b};"></div>
+                    </div>
+                    <div>
+                        <div style="font-size:14px;font-weight:700;color:var(--ink);line-height:1.5;">${cat.name}</div>
+                        <div style="font-size:11px;color:var(--ink-3);margin-top:4px;">${badge}</div>
                     </div>
                 </div>`;
             }).join('');

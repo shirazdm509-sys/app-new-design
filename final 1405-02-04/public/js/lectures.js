@@ -43,12 +43,41 @@ async function fetchWPCategories() {
 
 function renderCategoryGrid(cats, isMainView = false) {
     if (cats.length === 0) return '<div class="col-span-2 text-center py-10 text-gray-500 font-bold text-sm">هیچ موردی یافت نشد.</div>';
+    if (isMainView) {
+        // Handoff design: gradient cards with geometric SVG overlay and Persian symbols
+        const gradDefs = [
+            { a: 'oklch(0.58 0.10 30)', b: 'oklch(0.38 0.08 28)', icon: '☾' },
+            { a: 'oklch(0.52 0.08 155)', b: 'oklch(0.32 0.06 158)', icon: '۞' },
+            { a: 'oklch(0.40 0.06 25)', b: 'oklch(0.24 0.05 25)', icon: '✦' },
+            { a: 'oklch(0.55 0.09 270)', b: 'oklch(0.35 0.07 270)', icon: '✧' },
+            { a: 'oklch(0.52 0.08 155)', b: 'oklch(0.32 0.06 158)', icon: '۞' },
+            { a: 'oklch(0.55 0.09 75)', b: 'oklch(0.38 0.07 70)', icon: '✦' },
+        ];
+        return cats.map((c, i) => {
+            const g = gradDefs[i % gradDefs.length];
+            const safeName = c.name ? c.name.replace(/'/g, "\\'") : 'بدون نام';
+            const countText = c.count > 0 ? `${toFa(c.count)} جلسه` : '';
+            return `<div onclick="handleCategoryClick(${c.id},'${safeName}')" class="lect-cat-card" style="background:linear-gradient(135deg,${g.a},${g.b});">
+              <div style="position:absolute;top:10px;left:10px;font-size:52px;opacity:0.15;line-height:1;font-family:serif;pointer-events:none;">${g.icon}</div>
+              <svg viewBox="0 0 100 100" style="position:absolute;inset:0;opacity:0.08;width:100%;height:100%;pointer-events:none;" preserveAspectRatio="none">
+                <circle cx="50" cy="50" r="40" fill="none" stroke="#fff" stroke-width="0.5"/>
+                <circle cx="50" cy="50" r="30" fill="none" stroke="#fff" stroke-width="0.5"/>
+                <path d="M50 10 L50 90 M10 50 L90 50" stroke="#fff" stroke-width="0.3"/>
+              </svg>
+              <div></div>
+              <div>
+                <div style="font-size:16px;font-weight:700;margin-bottom:4px;line-height:1.4;">${c.name}</div>
+                <div style="font-size:11px;opacity:0.8;">${countText}</div>
+              </div>
+            </div>`;
+        }).join('');
+    }
+    // Sub-categories: simple icon cards
     const colors = ['text-amber-500 bg-amber-50', 'text-teal-500 bg-teal-50', 'text-blue-500 bg-blue-50', 'text-rose-500 bg-rose-50', 'text-purple-500 bg-purple-50'];
     return cats.map((c, i) => {
         const colorCls = colors[i % colors.length];
         const safeName = c.name ? c.name.replace(/'/g, "\\'") : 'بدون نام';
-        const isTargetMain = TARGET_MAIN_CATS.includes(c.name.trim());
-        const countBadge = (isMainView || isTargetMain || c.count === 0) ? '' : `<span class="text-[10px] text-gray-400 bg-gray-50 px-2 py-0.5 rounded-full">${toFa(c.count)} نوشته</span>`;
+        const countBadge = c.count > 0 ? `<span class="text-[10px] text-gray-400 bg-gray-50 px-2 py-0.5 rounded-full">${toFa(c.count)} نوشته</span>` : '';
         return `<div onclick="handleCategoryClick(${c.id}, '${safeName}')" class="bg-white rounded-3xl p-5 shadow-sm border border-gray-100 flex flex-col items-center justify-center gap-3 cursor-pointer hover:shadow-md hover:border-brand-100 transition active:scale-95 text-center"><div class="w-14 h-14 ${colorCls} rounded-full flex items-center justify-center text-2xl shadow-sm"><i class="fas fa-folder-open"></i></div><h3 class="font-bold text-xs text-gray-800 text-center line-clamp-2 leading-relaxed">${c.name}</h3>${countBadge}</div>`;
     }).join('');
 }

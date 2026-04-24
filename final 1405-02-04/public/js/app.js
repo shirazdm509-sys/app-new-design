@@ -912,6 +912,8 @@ async function loadNotifications() {
         const unread = _notifications.filter(n => !n.is_read).length;
         const badge = document.getElementById('notif-badge');
         if (badge) { if(unread>0){badge.classList.remove('hidden');}else{badge.classList.add('hidden');} }
+        const dtBadge = document.getElementById('dt-notif-dot');
+        if (dtBadge) { if(unread>0){dtBadge.classList.remove('hidden');}else{dtBadge.classList.add('hidden');} }
     } catch(e) {}
 }
 
