@@ -275,6 +275,9 @@
                 </div>
 
 
+                <!-- BANNERS position: main (primary banner slot) -->
+                <div id="home-banner-main" class="mb-3 flex flex-col gap-2"></div>
+
                 <!-- BANNERS position: after_slider -->
                 <div id="home-banner-after_slider" class="px-4 mb-4 flex flex-col gap-3"></div>
 
@@ -393,10 +396,10 @@
                 <!-- BANNERS position: after_lectures -->
                 <div id="home-banner-after_lectures" class="px-4 mb-4 flex flex-col gap-3"></div>
 
-                <!-- LATEST IMAGES -->
+                <!-- LATEST STORIES -->
                 <div id="home-media-images-section" class="mb-5 hidden">
                     <div class="home-section-bar px-5 mb-3">
-                        <h3 class="home-sec-title">آخرین تصاویر</h3>
+                        <h3 class="home-sec-title">آخرین استوری‌ها</h3>
                         <button onclick="navToScreen('media');setTimeout(()=>switchMediaTab('photo'),80)" class="home-sec-more">بیشتر <i class="fas fa-chevron-left text-[8px]"></i></button>
                     </div>
                     <div id="home-latest-images" class="grid grid-cols-3 gap-2 px-4"></div>
@@ -470,7 +473,7 @@
                     <button onclick="openGlobalSearch()" class="icon-btn">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
                     </button>
-                    <button id="btn-media-calendar" class="icon-btn shrink-0">
+                    <button id="btn-media-calendar" onclick="openCalendar()" class="icon-btn shrink-0" title="تقویم برنامه‌ها">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
                     </button>
                     <div class="relative shrink-0">
@@ -780,7 +783,7 @@
                 <div class="min-w-0 flex-1">
                     <div id="lectures-header-title" style="font-size:15px;font-weight:600;color:var(--ink);transition:color 0.3s;">سخنرانی‌ها</div>
                 </div>
-                <button onclick="openSettings()" class="icon-btn shrink-0" id="btn-lectures-settings">
+                <button onclick="openCalendar()" class="icon-btn shrink-0" id="btn-lectures-settings" title="تقویم برنامه‌ها">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
                 </button>
             </header>
@@ -1431,6 +1434,21 @@ function filterOfflineBooks() {
         }
     });
 }
+
+// Calendar button — open content page for schedule
+function openCalendar() {
+    openContentPage('calendar', 'تقویم برنامه‌ها');
+}
+
+// Ensure home-banner-main is included in banner loader
+(function patchBannerLoader() {
+    const origLoad = window.loadBanners;
+    if (!origLoad) return;
+    window.loadBanners = async function() {
+        await origLoad.apply(this, arguments);
+        // also clear main banner slot so JS can fill it
+    };
+})();
 </script>
 
 <!-- PWA Install Modal -->

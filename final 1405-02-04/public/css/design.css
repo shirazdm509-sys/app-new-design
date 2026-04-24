@@ -369,5 +369,25 @@ body:not(.global-dark) #settings-modal { background: var(--card) !important; }
 body:not(.global-dark) #global-search-modal { background: var(--card) !important; }
 body:not(.global-dark) #global-search-modal .border-gray-200 { border-color: var(--border-soft) !important; }
 
-/* ─── Home: limit latest images to 3 (#10) ─── */
+/* ─── Home: limit latest images to 3, story 9:16 ratio ─── */
 #home-latest-images > div:nth-child(n+4) { display: none !important; }
+#home-latest-images > div { aspect-ratio: 9/16 !important; border-radius: var(--r-sm); overflow: hidden; }
+#home-latest-images > div img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ─── Sidebar footer text brighter ─── */
+.sdi { color: rgba(232,213,168,0.88) !important; }
+.sdi span { color: rgba(232,213,168,0.88) !important; }
+#sd-footer .sdi { color: rgba(232,213,168,0.88) !important; }
+
+/* ─── Desktop home books grid ─── */
+@media (min-width: 640px) {
+  #home-books-container {
+    display: grid !important;
+    grid-template-columns: repeat(6, 1fr) !important;
+    overflow-x: visible !important;
+    padding-bottom: 4px !important;
+  }
+  #home-books-container .book-card {
+    width: 100% !important;
+  }
+}
