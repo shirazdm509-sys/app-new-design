@@ -166,7 +166,7 @@ body:not(.global-dark) #desktop-sidebar { background: #253c30 !important; }
 }
 
 /* ─── Section Header ─── */
-.home-section-bar { align-items: center; margin-top: 24px; margin-bottom: 12px; }
+.home-section-bar { display: flex; align-items: center; justify-content: space-between; margin-top: 24px; margin-bottom: 12px; }
 .home-sec-title {
   font-size: 15px;
   font-weight: 700;
@@ -303,3 +303,71 @@ body:not(.global-dark) #screen-media button.bg-white { background-color: var(--c
 }
 .book-card:hover { transform: translateY(-3px); }
 .book-card:hover .book-cover-wrap { box-shadow: var(--sh-3) !important; }
+
+/* ─── Inner Pages & Overlays — new theme (#6, #7) ─── */
+body:not(.global-dark) #content-page-overlay,
+body:not(.global-dark) #content-page-overlay header {
+  background: var(--bg) !important;
+}
+body:not(.global-dark) #content-page-overlay header {
+  background: var(--card) !important;
+  border-bottom-color: var(--border-soft) !important;
+}
+body:not(.global-dark) #content-page-overlay .bg-white,
+body:not(.global-dark) #content-page-overlay .bg-gray-50 {
+  background: var(--bg-soft) !important;
+}
+
+/* Video / Audio / Gallery categories inside media */
+body:not(.global-dark) #screen-media .bg-white {
+  background-color: var(--card) !important;
+}
+body:not(.global-dark) #screen-media .border-gray-100 {
+  border-color: var(--border-soft) !important;
+}
+body:not(.global-dark) #screen-media .bg-gray-50 {
+  background-color: var(--bg-soft) !important;
+}
+
+/* Lectures / News / Statements single view */
+body:not(.global-dark) #screen-lectures .bg-white,
+body:not(.global-dark) #screen-news .bg-white,
+body:not(.global-dark) #screen-statements .bg-white {
+  background-color: var(--card) !important;
+}
+body:not(.global-dark) #screen-lectures .border-gray-100,
+body:not(.global-dark) #screen-news .border-gray-100,
+body:not(.global-dark) #screen-statements .border-gray-100 {
+  border-color: var(--border-soft) !important;
+}
+body:not(.global-dark) #screen-lectures .bg-gray-50,
+body:not(.global-dark) #screen-news .bg-gray-50,
+body:not(.global-dark) #screen-statements .bg-gray-50 {
+  background-color: var(--bg-soft) !important;
+}
+body:not(.global-dark) #screen-lectures .text-gray-800,
+body:not(.global-dark) #screen-news .text-gray-800,
+body:not(.global-dark) #screen-statements .text-gray-800 {
+  color: var(--ink) !important;
+}
+body:not(.global-dark) #screen-lectures .text-gray-600,
+body:not(.global-dark) #screen-news .text-gray-600,
+body:not(.global-dark) #screen-statements .text-gray-600 {
+  color: var(--ink-2) !important;
+}
+
+/* Q&A screen */
+body:not(.global-dark) #screen-qa .bg-white { background-color: var(--card) !important; }
+body:not(.global-dark) #screen-qa .bg-gray-50 { background-color: var(--bg-soft) !important; }
+body:not(.global-dark) #screen-qa { background: var(--bg) !important; }
+body:not(.global-dark) #screen-qa header { background: var(--card) !important; border-bottom-color: var(--border-soft) !important; }
+body:not(.global-dark) #screen-qa .border-gray-100 { border-color: var(--border-soft) !important; }
+
+/* Modals and overlays */
+body:not(.global-dark) #notif-panel > div:last-child { background: var(--card) !important; }
+body:not(.global-dark) #settings-modal { background: var(--card) !important; }
+body:not(.global-dark) #global-search-modal { background: var(--card) !important; }
+body:not(.global-dark) #global-search-modal .border-gray-200 { border-color: var(--border-soft) !important; }
+
+/* ─── Home: limit latest images to 3 (#10) ─── */
+#home-latest-images > div:nth-child(n+4) { display: none !important; }
