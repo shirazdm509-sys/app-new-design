@@ -36,6 +36,7 @@
         }
     </script>
     <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/design.css">
 </head>
 <body class="font-vazir antialiased text-gray-800">
 
@@ -92,24 +93,59 @@
     <!-- DESKTOP SIDEBAR — فقط در حالت دسکتاپ نمایش داده می‌شه -->
     <aside id="desktop-sidebar">
         <div id="sd-brand">
-            <div id="sd-logo"><i class="fas fa-book-open text-xl" id="sd-logo-icon" style="color:#c89a5a;"></i></div>
+            <div id="sd-logo" style="background:linear-gradient(135deg,var(--green),var(--green-deep));border:2px solid rgba(184,154,90,0.45);">
+                <span style="font-size:22px;font-weight:700;color:var(--gold-wash);font-family:Vazir,serif;" id="sd-logo-icon">د</span>
+            </div>
             <div id="sd-brand-name">نرم افزار آیت الله دستغیب</div>
             <div id="sd-brand-sub">DastgheibQoba.info</div>
         </div>
         <nav id="sd-nav">
-            <button class="nav-item sdi" data-nav="home" onclick="navToScreen('home')"><i class="fas fa-home"></i><span>خانه</span></button>
-            <button class="nav-item sdi" data-nav="library" onclick="navToScreen('library')"><i class="fas fa-book"></i><span>کتابخانه</span></button>
-            <button class="nav-item sdi" data-nav="media" onclick="navToScreen('media')"><i class="fas fa-photo-film"></i><span>رسانه</span></button>
-            <button class="nav-item sdi" data-nav="lectures" onclick="navToScreen('lectures')"><i class="fas fa-microphone-alt"></i><span>سخنرانی</span></button>
-            <button class="nav-item sdi" data-nav="news" onclick="navToScreen('news')"><i class="fas fa-newspaper"></i><span>اخبار</span></button>
-            <button class="nav-item sdi" data-nav="statements" onclick="navToScreen('statements')"><i class="fas fa-scroll"></i><span>بیانیه‌ها</span></button>
-            <button class="nav-item sdi" data-nav="qa" onclick="navToScreen('qa')"><i class="fas fa-question-circle"></i><span>سوال و جواب</span></button>
+            <button class="nav-item sdi" data-nav="home" onclick="navToScreen('home')">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5L12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 001 1h3v-6h6v6h3a1 1 0 001-1V9.5"/></svg>
+                <span>خانه</span>
+            </button>
+            <button class="nav-item sdi" data-nav="library" onclick="navToScreen('library')">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 012-2h13v16H6a2 2 0 00-2 2V5z"/><path d="M4 19a2 2 0 012-2h13"/></svg>
+                <span>کتابخانه</span>
+            </button>
+            <button class="nav-item sdi" data-nav="media" onclick="navToScreen('media')">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9l5 3-5 3V9z" fill="currentColor" stroke="none"/></svg>
+                <span>رسانه</span>
+            </button>
+            <button class="nav-item sdi" data-nav="lectures" onclick="navToScreen('lectures')">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3"/></svg>
+                <span>سخنرانی</span>
+            </button>
+            <button class="nav-item sdi" data-nav="news" onclick="navToScreen('news')">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7V5h14v2M12 5v14M9 19h6"/></svg>
+                <span>اخبار</span>
+            </button>
+            <button class="nav-item sdi" data-nav="statements" onclick="navToScreen('statements')">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="15" height="16" rx="2"/><path d="M18 8h3v10a2 2 0 01-2 2h0M7 8h7M7 12h7M7 16h5"/></svg>
+                <span>بیانیه‌ها</span>
+            </button>
+            <button class="nav-item sdi" data-nav="qa" onclick="navToScreen('qa')">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 115 0c0 1.5-2.5 2-2.5 3.5M12 17h.01"/></svg>
+                <span>سوال و جواب</span>
+            </button>
         </nav>
         <div id="sd-footer">
-            <button class="sdi" onclick="openGlobalSearch()"><i class="fas fa-search"></i><span>جستجو</span></button>
-            <button class="sdi" onclick="openNotifications()"><i class="fas fa-bell"></i><span>اطلاعیه‌ها</span></button>
-            <button class="sdi" onclick="toggleGlobalTheme()"><i class="fas fa-adjust"></i><span>حالت تاریک</span></button>
-            <button class="sdi" onclick="navToScreen('auth')"><i class="fas fa-user"></i><span>حساب کاربری</span></button>
+            <button class="sdi" onclick="openGlobalSearch()">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+                <span>جستجو</span>
+            </button>
+            <button class="sdi" onclick="openNotifications()">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0112 0c0 5 2 6 2 7H4c0-1 2-2 2-7z"/><path d="M10 19a2 2 0 004 0"/></svg>
+                <span>اطلاعیه‌ها</span>
+            </button>
+            <button class="sdi" onclick="toggleGlobalTheme()">
+                <i class="fas fa-moon" id="sd-theme-icon" style="width:17px;text-align:center;font-size:15px;"></i>
+                <span>حالت تاریک</span>
+            </button>
+            <button class="sdi" onclick="navToScreen('auth')">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/></svg>
+                <span>حساب کاربری</span>
+            </button>
         </div>
     </aside>
 
@@ -119,12 +155,12 @@
         <!-- ============================================== -->
         <!-- 0. صفحه ورود / ثبت‌نام -->
         <!-- ============================================== -->
-        <div id="screen-auth" class="screen flex-col bg-gray-50 h-full">
-            <header class="shrink-0 pt-safe pt-3 pb-3 px-5 bg-white border-b border-gray-100 flex items-center gap-3 shadow-sm">
-                <button onclick="handleBackButton()" class="w-10 h-10 flex items-center justify-center bg-gray-50 rounded-2xl text-gray-500 hover:bg-gray-100 transition">
-                    <i class="fas fa-arrow-right"></i>
+        <div id="screen-auth" class="screen flex-col h-full" style="background:var(--bg);">
+            <header class="shrink-0 px-4 flex items-center gap-2" style="padding-top:14px;padding-bottom:12px;background:var(--card);border-bottom:1px solid var(--border-soft);">
+                <button onclick="handleBackButton()" class="icon-btn">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
                 </button>
-                <h1 class="font-black text-gray-800 text-base" id="auth-screen-title">ورود به حساب کاربری</h1>
+                <div style="font-size:15px;font-weight:600;color:var(--ink);" id="auth-screen-title">ورود به حساب کاربری</div>
             </header>
             <div class="flex-1 overflow-y-auto px-5 py-6 flex flex-col gap-5">
                 <!-- پروفایل کاربر (اگه لاگین باشه) -->
@@ -203,30 +239,29 @@
         <!-- 1. داشبورد اصلی (Home) -->
         <!-- ============================================== -->
         <div id="screen-home" class="screen active flex-col bg-gray-50 h-full">
-            <header class="shrink-0 px-4 py-3 sticky top-0 z-10 flex justify-between items-center" style="background:rgba(250,248,245,0.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(200,154,90,0.12);">
-                <!-- راست: لوگوی برند + عنوان -->
-                <div class="flex items-center gap-2.5 cursor-pointer" onclick="navToScreen('auth')">
-                    <div style="text-align:right;">
-                        <h1 class="text-[15px] font-black" style="color:#2a2018;line-height:1.3;" id="home-app-title">آیت الله دستغیب</h1>
-                        <h2 class="text-[10px] font-bold" style="color:#7a6a58;" id="home-app-subtitle">شهید محراب</h2>
-                    </div>
-                    <div class="w-10 h-10 rounded-full flex items-center justify-center shrink-0" style="background:#3c5448;border:2px solid rgba(200,154,90,0.5);box-shadow:0 2px 8px rgba(42,32,24,0.15);">
-                        <span style="font-size:18px;font-weight:900;color:#e8d5a8;font-family:Vazir,serif;" id="sd-logo-icon">د</span>
-                    </div>
+            <header class="shrink-0 px-4 sticky top-0 z-10 flex items-center gap-2" style="padding-top:14px;padding-bottom:12px;background:var(--card);backdrop-filter:blur(12px);border-bottom:1px solid var(--border-soft);">
+                <!-- BrandMark -->
+                <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--green),var(--green-deep));color:var(--gold-wash);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;flex-shrink:0;box-shadow:inset 0 0 0 2px rgba(184,154,90,0.4);cursor:pointer;" onclick="navToScreen('auth')">
+                    <span style="line-height:1;transform:translateY(1px);" id="sd-logo-icon">د</span>
                 </div>
-                <!-- چپ: دکمه‌های اکشن -->
-                <div class="flex gap-0.5">
-                    <button onclick="toggleGlobalTheme()" id="global-theme-btn" class="w-10 h-10 flex items-center justify-center transition" style="color:#7a6a58;">
-                        <i class="fas fa-moon text-base" id="global-theme-icon"></i>
-                    </button>
-                    <button onclick="openGlobalSearch()" class="w-10 h-10 flex items-center justify-center transition" style="color:#7a6a58;">
-                        <i class="fas fa-search text-base"></i>
-                    </button>
-                    <button onclick="openNotifications()" class="w-10 h-10 flex items-center justify-center relative" style="color:#7a6a58;" id="bell-btn">
-                        <i class="far fa-bell text-base"></i>
-                        <span id="notif-badge" class="hidden absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full"></span>
-                    </button>
+                <!-- Title -->
+                <div class="flex-1 min-w-0 cursor-pointer" onclick="navToScreen('auth')">
+                    <div style="font-size:15px;font-weight:600;color:var(--ink);line-height:1.3;" id="home-app-title">آیت الله دستغیب</div>
+                    <div style="font-size:11px;color:var(--ink-3);" id="home-app-subtitle">شهید محراب</div>
                 </div>
+                <!-- Theme toggle -->
+                <button onclick="toggleGlobalTheme()" id="global-theme-btn" class="icon-btn">
+                    <i class="fas fa-moon" id="global-theme-icon" style="font-size:16px;"></i>
+                </button>
+                <!-- Search -->
+                <button onclick="openGlobalSearch()" class="icon-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+                </button>
+                <!-- Bell -->
+                <button onclick="openNotifications()" class="icon-btn" id="bell-btn" style="position:relative;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0112 0c0 5 2 6 2 7H4c0-1 2-2 2-7z"/><path d="M10 19a2 2 0 004 0"/></svg>
+                    <span id="notif-badge" class="hidden" style="position:absolute;top:8px;left:8px;width:7px;height:7px;border-radius:50%;background:var(--gold-deep);box-shadow:0 0 0 2px var(--card);"></span>
+                </button>
             </header>
 
             <div id="home-scroll-content" class="flex-1 overflow-y-auto pb-10 pt-2">
@@ -284,40 +319,73 @@
                     </div>
                 </div>
 
-                <!-- SHORTCUTS GRID (8 items, responsive) -->
-                <div id="home-shortcuts-section" class="grid grid-cols-4 sm:grid-cols-8 gap-x-2 gap-y-3 px-4 mb-5">
-                    <div class="shortcut-item flex flex-col items-center gap-1.5 cursor-pointer" onclick="openContentPage('social','شبکه‌های اجتماعی')">
-                        <div class="sc-icon" style="background:rgba(200,110,82,0.12);border-color:rgba(200,110,82,0.18);color:#9a3020;"><i class="fab fa-instagram"></i></div>
-                        <span class="shortcut-label text-[10px] font-bold text-center" style="color:#7a6a58;">شبکه‌های اجتماعی</span>
+                <!-- SHORTCUTS GRID (8 items, 4×2) -->
+                <div id="home-shortcuts-section" class="grid grid-cols-4 sm:grid-cols-8" style="gap:8px;padding:20px 16px 4px;margin-bottom:4px;">
+
+                    <!-- شبکه‌های اجتماعی -->
+                    <div class="shortcut-item" onclick="openContentPage('social','شبکه‌های اجتماعی')">
+                        <div class="sc-icon" style="background:rgba(196,122,84,0.12);color:var(--cat-1);">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg>
+                        </div>
+                        <span class="shortcut-label">شبکه‌های اجتماعی</span>
                     </div>
-                    <div class="shortcut-item flex flex-col items-center gap-1.5 cursor-pointer" onclick="openContentPage('biography','زندگی‌نامه')">
-                        <div class="sc-icon" style="background:rgba(78,136,178,0.12);border-color:rgba(78,136,178,0.18);color:#2a68a0;"><img src="/icons/biography-icon.png" alt="" style="width:22px;height:22px;object-fit:contain;filter:hue-rotate(200deg) saturate(60%);" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><i class="fas fa-user-graduate" style="display:none;"></i></div>
-                        <span class="shortcut-label text-[10px] font-bold text-center" style="color:#7a6a58;">زندگی‌نامه</span>
+
+                    <!-- پرداخت -->
+                    <div class="shortcut-item" onclick="navToScreen('payment')">
+                        <div class="sc-icon" style="background:rgba(90,126,160,0.12);color:var(--cat-2);">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h3"/></svg>
+                        </div>
+                        <span class="shortcut-label">پرداخت</span>
                     </div>
-                    <div class="shortcut-item flex flex-col items-center gap-1.5 cursor-pointer" onclick="openContentPage('mosque','مسجد قبا')">
-                        <div class="sc-icon" style="background:rgba(200,154,90,0.12);border-color:rgba(200,154,90,0.2);color:#7a5820;"><i class="fas fa-mosque"></i></div>
-                        <span class="shortcut-label text-[10px] font-bold text-center" style="color:#7a6a58;">مسجد قبا</span>
+
+                    <!-- بیانیه‌ها -->
+                    <div class="shortcut-item" onclick="navToScreen('statements')">
+                        <div class="sc-icon" style="background:var(--green-wash);color:var(--green-deep);">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="15" height="16" rx="2"/><path d="M18 8h3v10a2 2 0 01-2 2h0M7 8h7M7 12h7M7 16h5"/></svg>
+                        </div>
+                        <span class="shortcut-label">بیانیه‌ها</span>
                     </div>
-                    <div class="shortcut-item flex flex-col items-center gap-1.5 cursor-pointer" onclick="openContentPage('contact','ارتباط با ما')">
-                        <div class="sc-icon" style="background:rgba(98,162,112,0.14);border-color:rgba(98,162,112,0.2);color:#386844;"><i class="fas fa-headset"></i></div>
-                        <span class="shortcut-label text-[10px] font-bold text-center" style="color:#7a6a58;">ارتباط با ما</span>
+
+                    <!-- اخبار -->
+                    <div class="shortcut-item" onclick="navToScreen('news')">
+                        <div class="sc-icon" style="background:rgba(122,104,160,0.12);color:var(--cat-3);">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7V5h14v2M12 5v14M9 19h6"/></svg>
+                        </div>
+                        <span class="shortcut-label">اخبار</span>
                     </div>
-                    <div class="shortcut-item flex flex-col items-center gap-1.5 cursor-pointer" onclick="navToScreen('news')">
-                        <div class="sc-icon" style="background:rgba(140,106,190,0.12);border-color:rgba(140,106,190,0.18);color:#5c3ca8;"><i class="fas fa-newspaper"></i></div>
-                        <span class="shortcut-label text-[10px] font-bold text-center" style="color:#7a6a58;">اخبار</span>
+
+                    <!-- ارتباط با ما -->
+                    <div class="shortcut-item" onclick="openContentPage('contact','ارتباط با ما')">
+                        <div class="sc-icon" style="background:rgba(90,136,112,0.12);color:var(--cat-4);">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v14H7l-3 3V5z"/><path d="M8 10h8M8 14h5"/></svg>
+                        </div>
+                        <span class="shortcut-label">ارتباط با ما</span>
                     </div>
-                    <div class="shortcut-item flex flex-col items-center gap-1.5 cursor-pointer" onclick="navToScreen('statements')">
-                        <div class="sc-icon" style="background:#e8f2ec;border-color:rgba(60,84,72,0.2);color:#2e4236;"><i class="fas fa-scroll"></i></div>
-                        <span class="shortcut-label text-[10px] font-bold text-center" style="color:#7a6a58;">بیانیه‌ها</span>
+
+                    <!-- مسجد قبا -->
+                    <div class="shortcut-item" onclick="openContentPage('mosque','مسجد قبا')">
+                        <div class="sc-icon" style="background:var(--gold-wash);color:var(--gold-deep);">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20V10a9 9 0 0118 0v10M3 20h18M9 20v-5a3 3 0 016 0v5M12 5v-3M11 2h2"/></svg>
+                        </div>
+                        <span class="shortcut-label">مسجد قبا</span>
                     </div>
-                    <div class="shortcut-item flex flex-col items-center gap-1.5 cursor-pointer" onclick="navToScreen('payment')">
-                        <div class="sc-icon" style="background:rgba(78,136,178,0.12);border-color:rgba(78,136,178,0.18);color:#2a68a0;"><i class="fas fa-credit-card"></i></div>
-                        <span class="shortcut-label text-[10px] font-bold text-center" style="color:#7a6a58;">پرداخت</span>
+
+                    <!-- زندگی‌نامه -->
+                    <div class="shortcut-item" onclick="openContentPage('biography','زندگی‌نامه')">
+                        <div class="sc-icon" style="background:rgba(90,126,160,0.12);color:var(--cat-2);">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="12" cy="9" r="2.5"/><path d="M8 16c1-2 2.5-3 4-3s3 1 4 3"/></svg>
+                        </div>
+                        <span class="shortcut-label">زندگی‌نامه</span>
                     </div>
-                    <div class="shortcut-item flex flex-col items-center gap-1.5 cursor-pointer" onclick="navToScreen('live')">
-                        <div class="sc-icon" style="background:rgba(200,110,82,0.12);border-color:rgba(200,110,82,0.18);color:#9a3020;"><i class="fas fa-broadcast-tower"></i></div>
-                        <span class="shortcut-label text-[10px] font-bold text-center" style="color:#7a6a58;">پخش زنده</span>
+
+                    <!-- پخش زنده -->
+                    <div class="shortcut-item" onclick="navToScreen('live')">
+                        <div class="sc-icon" style="background:rgba(196,122,84,0.12);color:var(--cat-1);">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M8.5 8.5a5 5 0 000 7M15.5 8.5a5 5 0 010 7M5.5 5.5a9 9 0 000 13M18.5 5.5a9 9 0 010 13"/></svg>
+                        </div>
+                        <span class="shortcut-label">پخش زنده</span>
                     </div>
+
                 </div>
 
                 <!-- BANNERS position: after_shortcuts -->
@@ -381,30 +449,44 @@
         <!-- ============================================== -->
         <!-- 2. کتابخانه (Library) -->
         <!-- ============================================== -->
-        <div id="screen-library" class="screen flex-col bg-gray-50 h-full">
-            <header class="shrink-0 pt-3 pb-3 px-6 bg-white/80 backdrop-blur-md sticky top-0 z-10 border-b border-gray-100 shadow-sm flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                    <button onclick="handleBackButton()" class="w-10 h-10 flex items-center justify-center bg-gray-50 rounded-full text-gray-500 hover:bg-gray-100 transition">
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
-                    <div>
-                        <h1 class="font-black text-xl text-gray-800">کتابخانه</h1>
-                        <p class="text-[10px] text-gray-400 mt-0.5" id="lib-count">در حال بارگذاری...</p>
-                    </div>
+        <div id="screen-library" class="screen flex-col h-full" style="background:var(--bg);">
+            <header class="shrink-0 px-4 sticky top-0 z-10 flex items-center gap-2" style="padding-top:14px;padding-bottom:12px;background:var(--card);border-bottom:1px solid var(--border-soft);">
+                <!-- Back (for JS history — hidden as main tab) -->
+                <button onclick="handleBackButton()" class="icon-btn" id="lib-back-btn" style="display:none;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+                </button>
+                <div class="flex-1 min-w-0">
+                    <div style="font-size:15px;font-weight:600;color:var(--ink);">کتابخانه</div>
+                    <div style="font-size:11px;color:var(--ink-3);" id="lib-count">در حال بارگذاری...</div>
                 </div>
-                <a href="/admin" class="w-9 h-9 bg-gray-50 text-gray-400 rounded-full flex items-center justify-center hover:bg-gray-100 transition"><i class="fas fa-cog"></i></a>
+                <button onclick="openGlobalSearch()" class="icon-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+                </button>
+                <a href="/admin" class="icon-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg>
+                </a>
             </header>
 
-            <div class="flex-1 overflow-y-auto px-3 pb-20 pt-4">
-                <div id="library-slider-wrap" class="relative w-full overflow-hidden mb-3 rounded-2xl" style="display:none;">
+            <!-- Filter Chips -->
+            <div class="lib-filter-strip" id="lib-filter-strip">
+                <button class="dsg-chip active" id="lib-chip-all" onclick="libChipSelect(this)">همه</button>
+                <button class="dsg-chip inactive" id="lib-chip-offline" onclick="libChipSelect(this);filterOfflineBooks()">دانلود شده</button>
+                <button class="dsg-chip inactive" onclick="libChipSelect(this)">اخلاق</button>
+                <button class="dsg-chip inactive" onclick="libChipSelect(this)">تفسیر</button>
+                <button class="dsg-chip inactive" onclick="libChipSelect(this)">فقه</button>
+                <button class="dsg-chip inactive" onclick="libChipSelect(this)">کلام</button>
+            </div>
+
+            <div class="flex-1 overflow-y-auto pb-20 pt-2">
+                <div id="library-slider-wrap" class="relative w-full overflow-hidden mb-3 rounded-2xl mx-3" style="display:none;">
                     <div id="library-slider-track" class="flex transition-transform duration-500 ease-out" style="height:100%;"></div>
                     <div id="library-slider-dots" class="absolute bottom-2 left-0 right-0 flex justify-center gap-1.5 z-10 pointer-events-none"></div>
                 </div>
-                <div id="library-banner-top" class="mb-2"></div>
-                <div id="books-grid" class="grid grid-cols-3 sm:grid-cols-5 gap-3"></div>
+                <div id="library-banner-top" class="mb-2 px-3"></div>
+                <div id="books-grid" class="grid grid-cols-3 sm:grid-cols-5 gap-3 px-3"></div>
                 <div id="lib-empty" class="hidden flex-col items-center justify-center py-32 opacity-60">
-                    <i class="fas fa-book-open text-6xl text-gray-300 mb-4"></i>
-                    <p class="text-gray-500 text-sm font-bold">کتابخانه خالی است</p>
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--ink-4);margin-bottom:16px;"><path d="M4 5a2 2 0 012-2h13v16H6a2 2 0 00-2 2V5z"/><path d="M4 19a2 2 0 012-2h13"/></svg>
+                    <p style="color:var(--ink-3);font-size:14px;font-weight:600;">کتابخانه خالی است</p>
                 </div>
             </div>
         </div>
@@ -412,40 +494,51 @@
         <!-- ============================================== -->
         <!-- 3. رسانه (Media) -->
         <!-- ============================================== -->
-        <div id="screen-media" class="screen flex-col bg-gray-50 h-full relative">
-            <header class="shrink-0 pt-3 pb-3 px-6 bg-white/80 backdrop-blur-md sticky top-0 z-10 border-b border-gray-100 shadow-sm flex flex-col gap-4">
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center gap-3">
-                        <button onclick="handleBackButton()" class="w-10 h-10 flex items-center justify-center bg-gray-50 rounded-full text-gray-500 hover:bg-gray-100 transition">
-                            <i class="fas fa-arrow-right"></i>
-                        </button>
-                        <h1 class="font-black text-xl text-gray-800">رسانه</h1>
-                    </div>
-                </div>
-                
-                <!-- تب‌های ناوبری مدیا + دکمه‌های حالت نمایش -->
+        <div id="screen-media" class="screen flex-col h-full relative" style="background:var(--bg);">
+            <header class="shrink-0 px-4 sticky top-0 z-10 flex flex-col gap-3" style="padding-top:14px;padding-bottom:12px;background:var(--card);border-bottom:1px solid var(--border-soft);">
+                <!-- عنوان + دکمه جستجو -->
                 <div class="flex items-center gap-2">
-                    <div class="flex bg-gray-100 p-1 rounded-xl flex-1">
-                        <button onclick="switchMediaTab('video')" id="tab-media-video" class="flex-1 py-2 text-sm font-bold rounded-lg bg-white shadow-sm text-brand-600 transition-all">فیلم</button>
-                        <button onclick="switchMediaTab('audio')" id="tab-media-audio" class="flex-1 py-2 text-sm font-bold rounded-lg text-gray-500 transition-all">صوت</button>
-                        <button onclick="switchMediaTab('photo')" id="tab-media-photo" class="flex-1 py-2 text-sm font-bold rounded-lg text-gray-500 transition-all">عکس</button>
+                    <div class="flex-1 min-w-0">
+                        <div style="font-size:15px;font-weight:600;color:var(--ink);">رسانه</div>
                     </div>
+                    <button onclick="openGlobalSearch()" class="icon-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+                    </button>
                     <div class="relative shrink-0">
-                        <button onclick="toggleViewModeDropdown()" id="view-mode-trigger" class="w-9 h-9 flex items-center justify-center bg-gray-100 rounded-xl transition text-gray-500 hover:bg-gray-200">
-                            <i id="view-mode-icon" class="fas fa-th text-sm"></i>
+                        <button onclick="toggleViewModeDropdown()" id="view-mode-trigger" class="icon-btn">
+                            <i id="view-mode-icon" class="fas fa-th" style="font-size:15px;"></i>
                         </button>
-                        <div id="view-mode-dropdown" class="hidden absolute top-11 left-0 bg-white rounded-2xl shadow-xl border border-gray-100 z-50 py-1 min-w-[130px]">
-                            <button onclick="setMediaViewMode('grid')" class="view-mode-option w-full flex items-center gap-3 px-4 py-2.5 text-xs font-bold text-gray-600 hover:bg-gray-50 transition" data-mode="grid">
+                        <div id="view-mode-dropdown" class="hidden absolute top-11 left-0 rounded-2xl shadow-xl z-50 py-1 min-w-[130px]" style="background:var(--card);border:1px solid var(--border-soft);">
+                            <button onclick="setMediaViewMode('grid')" class="view-mode-option w-full flex items-center gap-3 px-4 py-2.5 text-xs font-bold hover:opacity-70 transition" data-mode="grid" style="color:var(--ink-2);">
                                 <i class="fas fa-th w-4 text-center"></i><span>شبکه‌ای</span>
                             </button>
-                            <button onclick="setMediaViewMode('list')" class="view-mode-option w-full flex items-center gap-3 px-4 py-2.5 text-xs font-bold text-gray-600 hover:bg-gray-50 transition" data-mode="list">
+                            <button onclick="setMediaViewMode('list')" class="view-mode-option w-full flex items-center gap-3 px-4 py-2.5 text-xs font-bold hover:opacity-70 transition" data-mode="list" style="color:var(--ink-2);">
                                 <i class="fas fa-list w-4 text-center"></i><span>فهرستی</span>
                             </button>
-                            <button onclick="setMediaViewMode('large')" class="view-mode-option w-full flex items-center gap-3 px-4 py-2.5 text-xs font-bold text-gray-600 hover:bg-gray-50 transition" data-mode="large">
+                            <button onclick="setMediaViewMode('large')" class="view-mode-option w-full flex items-center gap-3 px-4 py-2.5 text-xs font-bold hover:opacity-70 transition" data-mode="large" style="color:var(--ink-2);">
                                 <i class="fas fa-th-large w-4 text-center"></i><span>بزرگ</span>
                             </button>
                         </div>
                     </div>
+                </div>
+
+                <!-- تب‌های فیلم / صوت / عکس -->
+                <div class="flex gap-2" style="padding-top:2px;background:var(--bg-deep);border-radius:var(--r-md);padding:4px;">
+                    <button onclick="switchMediaTab('video')" id="tab-media-video"
+                        class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-[10px] text-sm font-semibold transition-all bg-white shadow-sm text-brand-600">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9l5 3-5 3V9z" fill="currentColor" stroke="none"/></svg>
+                        فیلم
+                    </button>
+                    <button onclick="switchMediaTab('audio')" id="tab-media-audio"
+                        class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-[10px] text-sm font-medium transition-all text-gray-500">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14v-2a8 8 0 0116 0v2"/><rect x="3" y="14" width="5" height="7" rx="2"/><rect x="16" y="14" width="5" height="7" rx="2"/></svg>
+                        صوت
+                    </button>
+                    <button onclick="switchMediaTab('photo')" id="tab-media-photo"
+                        class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-[10px] text-sm font-medium transition-all text-gray-500">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 15l-5-5-8 8"/></svg>
+                        عکس
+                    </button>
                 </div>
             </header>
 
@@ -710,18 +803,16 @@
         <!-- ============================================== -->
         <!-- 5. سخنرانی‌ها (Lectures) -->
         <!-- ============================================== -->
-        <div id="screen-lectures" class="screen flex-col bg-gray-50 relative h-full">
-            <header id="lectures-header" class="shrink-0 pt-3 pb-3 px-6 bg-white/80 backdrop-blur-md sticky top-0 z-10 border-b border-gray-100 shadow-sm flex items-center justify-between transition-colors duration-300">
-                <div class="flex items-center gap-3 min-w-0 flex-1">
-                    <button id="btn-lectures-back" onclick="wpNavBack()" class="w-10 h-10 flex items-center justify-center bg-gray-50 rounded-full text-gray-500 hover:bg-gray-100 transition shrink-0">
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
-                    <div class="min-w-0 flex-1">
-                        <h1 id="lectures-header-title" class="font-black text-xl text-gray-800 truncate transition-colors duration-300">سخنرانی‌ها</h1>
-                    </div>
+        <div id="screen-lectures" class="screen flex-col relative h-full" style="background:var(--bg);">
+            <header id="lectures-header" class="shrink-0 px-4 sticky top-0 z-10 flex items-center gap-2 transition-colors duration-300" style="padding-top:14px;padding-bottom:12px;background:var(--card);border-bottom:1px solid var(--border-soft);">
+                <button id="btn-lectures-back" onclick="wpNavBack()" class="icon-btn shrink-0">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+                </button>
+                <div class="min-w-0 flex-1">
+                    <div id="lectures-header-title" style="font-size:15px;font-weight:600;color:var(--ink);transition:color 0.3s;">سخنرانی‌ها</div>
                 </div>
-                <button id="btn-lectures-settings" onclick="openSettings()" class="hidden w-10 h-10 flex items-center justify-center bg-gray-50 rounded-full text-gray-500 hover:bg-gray-100 transition shrink-0 ml-2 shadow-sm">
-                    <i class="fas fa-font"></i>
+                <button id="btn-lectures-settings" onclick="openSettings()" class="icon-btn hidden shrink-0">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7V5h14v2M12 5v14M9 19h6"/></svg>
                 </button>
             </header>
             
@@ -758,13 +849,17 @@
         <!-- ============================================== -->
         <!-- 6. اخبار (News) - WP platform like lectures -->
         <!-- ============================================== -->
-        <div id="screen-news" class="screen flex-col bg-gray-50 relative h-full">
-            <header id="news-header" class="shrink-0 pt-3 pb-3 px-6 bg-white/80 backdrop-blur-md sticky top-0 z-10 border-b border-gray-100 shadow-sm flex items-center justify-between transition-colors duration-300">
-                <div class="flex items-center gap-3 min-w-0 flex-1">
-                    <button onclick="newsNavBack()" class="w-10 h-10 flex items-center justify-center bg-gray-50 rounded-full text-gray-500 hover:bg-gray-100 transition shrink-0"><i class="fas fa-arrow-right"></i></button>
-                    <h1 id="news-header-title" class="font-black text-xl text-gray-800 truncate">اخبار</h1>
+        <div id="screen-news" class="screen flex-col relative h-full" style="background:var(--bg);">
+            <header id="news-header" class="shrink-0 px-4 sticky top-0 z-10 flex items-center gap-2 transition-colors duration-300" style="padding-top:14px;padding-bottom:12px;background:var(--card);border-bottom:1px solid var(--border-soft);">
+                <button onclick="newsNavBack()" class="icon-btn shrink-0">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+                </button>
+                <div class="flex-1 min-w-0">
+                    <div id="news-header-title" style="font-size:15px;font-weight:600;color:var(--ink);">اخبار</div>
                 </div>
-                <button id="btn-news-settings" onclick="openSettings()" class="hidden w-10 h-10 flex items-center justify-center bg-gray-50 rounded-full text-gray-500 hover:bg-gray-100 transition shrink-0 ml-2 shadow-sm"><i class="fas fa-font"></i></button>
+                <button id="btn-news-settings" onclick="openSettings()" class="icon-btn hidden shrink-0">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7V5h14v2M12 5v14M9 19h6"/></svg>
+                </button>
             </header>
             <div class="flex-1 overflow-y-auto px-6 pb-20 pt-6 relative">
                 <div id="news-loading" class="hidden flex-col items-center justify-center py-20 opacity-70">
@@ -785,13 +880,17 @@
         <!-- ============================================== -->
         <!-- 7. بیانیه‌ها (Statements) - WP platform -->
         <!-- ============================================== -->
-        <div id="screen-statements" class="screen flex-col bg-gray-50 relative h-full">
-            <header id="statements-header" class="shrink-0 pt-3 pb-3 px-6 bg-white/80 backdrop-blur-md sticky top-0 z-10 border-b border-gray-100 shadow-sm flex items-center justify-between transition-colors duration-300">
-                <div class="flex items-center gap-3 min-w-0 flex-1">
-                    <button onclick="statementsNavBack()" class="w-10 h-10 flex items-center justify-center bg-gray-50 rounded-full text-gray-500 hover:bg-gray-100 transition shrink-0"><i class="fas fa-arrow-right"></i></button>
-                    <h1 id="statements-header-title" class="font-black text-xl text-gray-800 truncate">بیانیه‌ها</h1>
+        <div id="screen-statements" class="screen flex-col relative h-full" style="background:var(--bg);">
+            <header id="statements-header" class="shrink-0 px-4 sticky top-0 z-10 flex items-center gap-2 transition-colors duration-300" style="padding-top:14px;padding-bottom:12px;background:var(--card);border-bottom:1px solid var(--border-soft);">
+                <button onclick="statementsNavBack()" class="icon-btn shrink-0">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+                </button>
+                <div class="flex-1 min-w-0">
+                    <div id="statements-header-title" style="font-size:15px;font-weight:600;color:var(--ink);">بیانیه‌ها</div>
                 </div>
-                <button id="btn-statements-settings" onclick="openSettings()" class="hidden w-10 h-10 flex items-center justify-center bg-gray-50 rounded-full text-gray-500 hover:bg-gray-100 transition shrink-0 ml-2 shadow-sm"><i class="fas fa-font"></i></button>
+                <button id="btn-statements-settings" onclick="openSettings()" class="icon-btn hidden shrink-0">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7V5h14v2M12 5v14M9 19h6"/></svg>
+                </button>
             </header>
             <div class="flex-1 overflow-y-auto px-6 pb-20 pt-6 relative">
                 <div id="statements-loading" class="hidden flex-col items-center justify-center py-20 opacity-70">
@@ -868,33 +967,44 @@
     </div>
 
     <!-- BOTTOM NAV -->
-    <nav id="bottom-nav" class="shrink-0 z-50" style="background:#faf8f5;border-top:1px solid #e8e2d9;">
-        <div class="flex items-center justify-around px-1 pt-1 pb-2" style="height:60px;">
-            <button class="nav-item active flex flex-col items-center justify-center gap-1 flex-1 relative" data-nav="home" onclick="navToScreen('home')" style="padding-top:10px;">
-                <span class="nav-dot" style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:#3c5448;display:none;"></span>
-                <i class="fas fa-home text-[18px]" style="color:#9a8a78;"></i>
-                <span class="text-[9px] font-bold" style="color:#9a8a78;">خانه</span>
+    <nav id="bottom-nav" class="shrink-0 z-50">
+        <div class="flex items-center justify-around px-2" style="height:62px;padding-top:6px;padding-bottom:10px;">
+
+            <!-- خانه -->
+            <button class="nav-item active flex flex-col items-center justify-center gap-1 flex-1 relative" data-nav="home" onclick="navToScreen('home')" style="padding-top:8px;">
+                <span class="nav-dot" style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--green);display:none;"></span>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5L12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 001 1h3v-6h6v6h3a1 1 0 001-1V9.5"/></svg>
+                <span style="font-size:10px;">خانه</span>
             </button>
-            <button class="nav-item flex flex-col items-center justify-center gap-1 flex-1 relative" data-nav="library" onclick="navToScreen('library')" style="padding-top:10px;">
-                <span class="nav-dot" style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:#3c5448;display:none;"></span>
-                <i class="fas fa-book text-[18px]" style="color:#9a8a78;"></i>
-                <span class="text-[9px] font-bold" style="color:#9a8a78;">کتابخانه</span>
+
+            <!-- کتابخانه -->
+            <button class="nav-item flex flex-col items-center justify-center gap-1 flex-1 relative" data-nav="library" onclick="navToScreen('library')" style="padding-top:8px;">
+                <span class="nav-dot" style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--green);display:none;"></span>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 012-2h13v16H6a2 2 0 00-2 2V5z"/><path d="M4 19a2 2 0 012-2h13"/></svg>
+                <span style="font-size:10px;">کتابخانه</span>
             </button>
-            <button class="nav-item flex flex-col items-center justify-center gap-1 flex-1 relative" data-nav="media" onclick="navToScreen('media')" style="padding-top:10px;">
-                <span class="nav-dot" style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:#3c5448;display:none;"></span>
-                <i class="fas fa-photo-film text-[18px]" style="color:#9a8a78;"></i>
-                <span class="text-[9px] font-bold" style="color:#9a8a78;">رسانه</span>
+
+            <!-- رسانه -->
+            <button class="nav-item flex flex-col items-center justify-center gap-1 flex-1 relative" data-nav="media" onclick="navToScreen('media')" style="padding-top:8px;">
+                <span class="nav-dot" style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--green);display:none;"></span>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9l5 3-5 3V9z" fill="currentColor" stroke="none"/></svg>
+                <span style="font-size:10px;">رسانه</span>
             </button>
-            <button class="nav-item flex flex-col items-center justify-center gap-1 flex-1 relative" data-nav="lectures" onclick="navToScreen('lectures')" style="padding-top:10px;">
-                <span class="nav-dot" style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:#3c5448;display:none;"></span>
-                <i class="fas fa-microphone-alt text-[18px]" style="color:#9a8a78;"></i>
-                <span class="text-[9px] font-bold" style="color:#9a8a78;">سخنرانی</span>
+
+            <!-- سخنرانی -->
+            <button class="nav-item flex flex-col items-center justify-center gap-1 flex-1 relative" data-nav="lectures" onclick="navToScreen('lectures')" style="padding-top:8px;">
+                <span class="nav-dot" style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--green);display:none;"></span>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3"/></svg>
+                <span style="font-size:10px;">سخنرانی</span>
             </button>
-            <button class="nav-item flex flex-col items-center justify-center gap-1 flex-1 relative" data-nav="qa" onclick="navToScreen('qa')" style="padding-top:10px;">
-                <span class="nav-dot" style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:#3c5448;display:none;"></span>
-                <i class="fas fa-question-circle text-[18px]" style="color:#9a8a78;"></i>
-                <span class="text-[9px] font-bold" style="color:#9a8a78;">سوال</span>
+
+            <!-- سؤال -->
+            <button class="nav-item flex flex-col items-center justify-center gap-1 flex-1 relative" data-nav="qa" onclick="navToScreen('qa')" style="padding-top:8px;">
+                <span class="nav-dot" style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:28px;height:3px;border-radius:2px;background:var(--green);display:none;"></span>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 115 0c0 1.5-2.5 2-2.5 3.5M12 17h.01"/></svg>
+                <span style="font-size:10px;">سؤال</span>
             </button>
+
         </div>
     </nav>
 </div>
@@ -1303,6 +1413,56 @@
 <script src="/js/media.js"></script>
 <script src="/js/news.js"></script>
 <script src="/js/app.js"></script>
+
+<script>
+// ─── Design helpers ───
+
+// Sync sidebar theme icon with main theme icon
+(function() {
+    const origApply = window.applyGlobalTheme;
+    // Will be patched after app.js loads via setTimeout
+    function patchThemeSync() {
+        const sdIcon = document.getElementById('sd-theme-icon');
+        if (!sdIcon) return;
+        const mainIcon = document.getElementById('global-theme-icon');
+        if (mainIcon) {
+            const isDark = mainIcon.classList.contains('fa-sun');
+            sdIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+        }
+    }
+    document.addEventListener('click', function(e) {
+        if (e.target.closest && e.target.closest('[onclick*="toggleGlobalTheme"]')) {
+            setTimeout(patchThemeSync, 50);
+        }
+    });
+    setTimeout(patchThemeSync, 500);
+})();
+
+function libChipSelect(btn) {
+    const strip = document.getElementById('lib-filter-strip');
+    if (!strip) return;
+    strip.querySelectorAll('.dsg-chip').forEach(c => {
+        c.classList.remove('active');
+        c.classList.add('inactive');
+    });
+    btn.classList.remove('inactive');
+    btn.classList.add('active');
+}
+
+function filterOfflineBooks() {
+    const grid = document.getElementById('books-grid');
+    if (!grid) return;
+    const cards = grid.querySelectorAll('[id^="dl-btn-"]');
+    // نمایش همه -> hide non-offline
+    grid.querySelectorAll('.book-card').forEach(card => {
+        const dlBtn = card.querySelector('[id^="dl-btn-"]');
+        if (dlBtn) {
+            const isOffline = dlBtn.style.background && dlBtn.style.background.includes('#');
+            card.style.display = (isOffline || dlBtn.querySelector('.fa-check')) ? '' : 'none';
+        }
+    });
+}
+</script>
 
 <!-- PWA Install Modal -->
 <div id="pwa-install-modal" class="hidden fixed inset-0 z-[9999] flex items-end justify-center p-4" style="background:rgba(0,0,0,0.5)" onclick="closePwaModal()">

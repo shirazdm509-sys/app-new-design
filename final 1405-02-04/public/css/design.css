@@ -1,0 +1,305 @@
+/* ====================================================
+   Design System — آیت الله دستغیب Redesign
+   Based on design_handoff/tokens.css
+   ==================================================== */
+
+/* ─── Design Tokens ─── */
+:root {
+  --bg:          #f8f5f0;
+  --bg-soft:     #f5f1eb;
+  --bg-deep:     #ede8e0;
+  --card:        #fefcf9;
+  --border-soft: #e0d8cc;
+  --border:      #cfc5b5;
+
+  --ink:         #2a2018;
+  --ink-2:       #5a4e3e;
+  --ink-3:       #8a7a6a;
+  --ink-4:       #a89888;
+
+  --green:       #4a7c65;
+  --green-deep:  #2e5241;
+  --green-soft:  #8cb8a0;
+  --green-wash:  #eef6f1;
+
+  --gold:        #b89a5a;
+  --gold-deep:   #8a6e32;
+  --gold-wash:   #faf4e8;
+
+  --cat-1:       #c47a54;
+  --cat-2:       #5a7ea0;
+  --cat-3:       #7a68a0;
+  --cat-4:       #5a8870;
+
+  --r-xs: 6px;
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+
+  --sh-1: 0 1px 2px rgba(40,32,24,0.04), 0 2px 6px rgba(40,32,24,0.04);
+  --sh-2: 0 2px 4px rgba(40,32,24,0.05), 0 8px 24px rgba(40,32,24,0.06);
+  --sh-3: 0 4px 8px rgba(40,32,24,0.06), 0 16px 40px rgba(40,32,24,0.08);
+
+  /* Legacy compatibility */
+  --bg-main:      var(--bg);
+  --bg-card:      var(--card);
+  --border-color: var(--border-soft);
+  --primary:      var(--green-deep);
+  --primary-dark: #243f31;
+  --accent:       var(--gold);
+  --accent-light: var(--green-wash);
+}
+
+/* ─── Global Overrides ─── */
+body:not(.global-dark) {
+  background: #e5dfd6 !important;
+}
+body:not(.global-dark) #app-wrapper {
+  background: var(--bg) !important;
+}
+
+/* Color remapping for warm cream theme */
+body:not(.global-dark) #app-wrapper .bg-white          { background-color: var(--card) !important; }
+body:not(.global-dark) #app-wrapper .bg-gray-50         { background-color: var(--bg-soft) !important; }
+body:not(.global-dark) #app-wrapper .bg-gray-100        { background-color: var(--bg-deep) !important; }
+body:not(.global-dark) #app-wrapper .border-gray-100    { border-color: var(--border-soft) !important; }
+body:not(.global-dark) #app-wrapper .border-gray-200    { border-color: var(--border) !important; }
+body:not(.global-dark) #app-wrapper .text-gray-800      { color: var(--ink) !important; }
+body:not(.global-dark) #app-wrapper .text-gray-700      { color: var(--ink-2) !important; }
+body:not(.global-dark) #app-wrapper .text-gray-600      { color: var(--ink-2) !important; }
+body:not(.global-dark) #app-wrapper .text-gray-500      { color: var(--ink-3) !important; }
+body:not(.global-dark) #app-wrapper .text-gray-400      { color: var(--ink-4) !important; }
+body:not(.global-dark) #app-wrapper header              { background-color: var(--card) !important; border-bottom-color: var(--border-soft) !important; }
+body:not(.global-dark) #app-wrapper .glass             { background: rgba(254,252,249,0.96) !important; }
+
+/* ─── Icon Button ─── */
+.icon-btn {
+  width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: var(--r-sm);
+  color: var(--ink-2);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.15s ease, color 0.15s ease;
+  padding: 0;
+}
+.icon-btn:hover { background: var(--bg-deep); color: var(--ink); }
+
+/* ─── Filter Chip ─── */
+.dsg-chip {
+  display: inline-flex; align-items: center;
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-family: inherit;
+  white-space: nowrap;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  line-height: 1;
+}
+.dsg-chip.active {
+  background: var(--green-deep);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+}
+.dsg-chip.inactive {
+  background: var(--card);
+  color: var(--ink-2);
+  border: 1px solid var(--border);
+  font-weight: 400;
+}
+.dsg-chip.inactive:hover {
+  background: var(--bg-deep);
+  border-color: var(--green-soft);
+  color: var(--green-deep);
+}
+
+/* ─── Library Filter Strip ─── */
+.lib-filter-strip {
+  display: flex; gap: 6px;
+  overflow-x: auto;
+  padding: 12px 16px 8px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  flex-shrink: 0;
+}
+.lib-filter-strip::-webkit-scrollbar { display: none; }
+
+/* ─── Bottom Nav ─── */
+body:not(.global-dark) #bottom-nav {
+  background: var(--card) !important;
+  border-top: 1px solid var(--border-soft) !important;
+  box-shadow: 0 -2px 12px rgba(40,32,24,0.05) !important;
+  border-radius: 20px 20px 0 0 !important;
+}
+#bottom-nav .nav-item svg      { color: var(--ink-3); transition: color 0.2s; }
+#bottom-nav .nav-item.active svg { color: var(--green-deep) !important; }
+#bottom-nav .nav-item i        { color: var(--ink-3); transition: color 0.2s; }
+#bottom-nav .nav-item.active i  { color: var(--green-deep) !important; }
+#bottom-nav .nav-item span     { color: var(--ink-3); font-weight: 400; transition: color 0.2s; }
+#bottom-nav .nav-item.active span { color: var(--green-deep) !important; font-weight: 600 !important; }
+#bottom-nav .nav-dot { background: var(--green) !important; }
+
+/* ─── Desktop Sidebar Overrides ─── */
+body:not(.global-dark) #desktop-sidebar { background: #253c30 !important; }
+
+/* ─── Home Header ─── */
+#screen-home > header {
+  background: var(--card) !important;
+  border-bottom: 1px solid var(--border-soft) !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+/* ─── Hero Card ─── */
+#home-hero-card {
+  border-radius: var(--r-lg) !important;
+  box-shadow: var(--sh-2) !important;
+}
+#home-slider {
+  border-radius: var(--r-lg) !important;
+  box-shadow: var(--sh-2) !important;
+}
+
+/* ─── Section Header ─── */
+.home-section-bar { align-items: center; margin-top: 24px; margin-bottom: 12px; }
+.home-sec-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+  padding-right: 10px;
+  border-right: 3px solid var(--green);
+  line-height: 1.4;
+}
+.home-sec-more {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--green-deep);
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  transition: color 0.15s;
+}
+.home-sec-more:hover { color: var(--green); }
+
+/* ─── Shortcut Items ─── */
+#home-shortcuts-section {
+  gap: 8px !important;
+  padding: 0 16px !important;
+  margin-bottom: 8px !important;
+  margin-top: 20px !important;
+}
+.shortcut-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 4px 10px !important;
+  background: var(--card) !important;
+  border-radius: var(--r-md) !important;
+  border: 1px solid var(--border-soft) !important;
+  cursor: pointer;
+}
+.shortcut-item:hover { background: var(--bg-soft) !important; }
+.shortcut-item:active { transform: scale(0.94); }
+
+.sc-icon {
+  width: 42px !important; height: 42px !important;
+  border-radius: 12px !important;
+  border: none !important;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: none !important;
+  transition: transform 0.15s;
+  flex-shrink: 0;
+}
+
+.shortcut-label {
+  font-size: 10.5px !important;
+  font-weight: 500 !important;
+  color: var(--ink-2) !important;
+  text-align: center;
+  line-height: 1.25 !important;
+  white-space: pre-line;
+}
+
+/* ─── Book Cards ─── */
+.book-cover-wrap {
+  border-radius: var(--r-sm) !important;
+  box-shadow: var(--sh-2) !important;
+}
+.book-title { color: var(--ink) !important; }
+.book-card:hover .book-title { color: var(--green-deep) !important; }
+
+/* Home book cards horizontal scroll */
+#home-books-container { padding-bottom: 12px !important; }
+#home-books-container .book-card { padding: 0 !important; }
+
+/* Library grid */
+#books-grid { padding: 0 12px 8px !important; }
+#books-grid .book-cover-wrap { border-radius: var(--r-sm) !important; }
+
+/* ─── Lecture / Post Cards ─── */
+.lecture-item {
+  border-radius: var(--r-md) !important;
+  border: 1px solid var(--border-soft) !important;
+  background: var(--card) !important;
+  box-shadow: var(--sh-1) !important;
+}
+
+/* ─── Auth Screen ─── */
+body:not(.global-dark) #screen-auth { background: var(--bg) !important; }
+.auth-input:focus {
+  border-color: var(--green) !important;
+  box-shadow: 0 0 0 3px rgba(74,124,101,0.12) !important;
+}
+
+/* ─── Media Tab Buttons ─── */
+body:not(.global-dark) #screen-media .bg-gray-100 { background-color: var(--bg-deep) !important; }
+body:not(.global-dark) #screen-media button.bg-white { background-color: var(--card) !important; }
+
+/* text-brand-600 → green-deep */
+.text-brand-600 { color: var(--green-deep) !important; }
+
+/* Media tab active state */
+#tab-media-video.bg-white,
+#tab-media-audio.bg-white,
+#tab-media-photo.bg-white {
+  background-color: var(--card) !important;
+  color: var(--green-deep) !important;
+  border: 1px solid var(--green-soft) !important;
+  box-shadow: var(--sh-1) !important;
+}
+#tab-media-video.text-gray-500,
+#tab-media-audio.text-gray-500,
+#tab-media-photo.text-gray-500 {
+  color: var(--ink-3) !important;
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  box-shadow: none !important;
+}
+
+/* ─── Desktop Sidebar ─── */
+.sdi svg, .nav-item.sdi svg { color: rgba(232,213,168,0.6); transition: color 0.18s; }
+.sdi:hover svg, .sdi:hover i { color: rgba(232,213,168,0.9) !important; }
+
+.nav-item.sdi.active { background: rgba(184,154,90,0.15) !important; }
+.nav-item.sdi.active svg { color: var(--gold) !important; }
+.nav-item.sdi.active i { color: var(--gold) !important; }
+.nav-item.sdi.active span { color: var(--gold) !important; }
+
+/* ─── Loading Screen ─── */
+#loading-screen { background: var(--bg) !important; }
+
+/* ─── Hover transitions ─── */
+.nav-item, .book-card, .lecture-item, .qa-choice-card {
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+.book-card:hover { transform: translateY(-3px); }
+.book-card:hover .book-cover-wrap { box-shadow: var(--sh-3) !important; }
