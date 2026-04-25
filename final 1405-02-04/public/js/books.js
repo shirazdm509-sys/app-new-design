@@ -272,8 +272,8 @@ function goToPage(index) {
     let htmlText=page.text;
     if(!htmlText.includes('<p>')&&!htmlText.includes('<br>')) htmlText=htmlText.replace(/\n/g,'<br><br>');
     htmlText=htmlText.replace(/\[(\d+)\]/g,'<sup class="text-brand-600 font-bold mx-0.5">[$1]</sup>');
-    let finalHTML=`<h2 class="text-3xl font-black mb-8 pb-4 border-b-2 border-brand-100 leading-snug">${page.name}</h2>`+htmlText;
-    if(notes[currentIndex]) finalHTML+=`<div class="mt-12 pt-6 border-t border-dashed border-gray-300 bg-gray-50 p-4 rounded-2xl"><h3 class="text-sm font-bold text-gray-500 mb-2"><i class="fas fa-pen-alt ml-1"></i> یادداشت:</h3><p class="text-sm text-gray-700 leading-relaxed whitespace-pre-wrap">${notes[currentIndex]}</p></div>`;
+    let finalHTML=`<h2 style="font-size:18px;font-weight:800;color:var(--ink);border-bottom:1px solid var(--border-soft);padding-bottom:12px;margin-bottom:20px;line-height:1.7;">${page.name}</h2>`+htmlText;
+    if(notes[currentIndex]) finalHTML+=`<div style="margin-top:32px;padding-top:16px;border-top:1px dashed var(--border-soft);background:var(--card);padding:16px;border-radius:var(--r-md);"><h3 style="font-size:12px;font-weight:700;color:var(--ink-3);margin-bottom:8px;"><i class="fas fa-pen-alt" style="margin-left:4px;"></i> یادداشت:</h3><p style="font-size:13px;color:var(--ink-2);line-height:1.8;white-space:pre-wrap;">${notes[currentIndex]}</p></div>`;
     const tc=document.getElementById('text-content');
     if(tc){tc.innerHTML=finalHTML;tc.style.fontSize=fontSize+'px';convertDOMNumbers(tc);applyHighlightsToPage();}
     document.getElementById('header-title').textContent=page.name;

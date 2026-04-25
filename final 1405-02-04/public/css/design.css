@@ -513,7 +513,7 @@ body:not(.global-dark) #global-search-modal .border-gray-200 { border-color: var
 .media-folder-card:hover { box-shadow: var(--sh-2); border-color: var(--green-soft); }
 .media-folder-card:active { transform: scale(0.97); }
 
-/* ─── Reader: apply warm theme to overlay ─── */
+/* ─── Reader: warm theme overlay (matches MobileReading handoff) ─── */
 body:not(.global-dark) #reader-overlay.theme-light {
   background: var(--bg-soft) !important;
 }
@@ -522,3 +522,36 @@ body:not(.global-dark) #reader-overlay #reader-footer {
   background: rgba(254,252,249,0.94) !important;
   border-color: var(--border-soft) !important;
 }
+
+/* Header: center the title block */
+#reader-header .truncate { text-align: center !important; }
+#reader-header #chapter-title { font-size: 11px !important; color: var(--ink-3) !important; font-weight: 600 !important; text-transform: none !important; letter-spacing: 0 !important; }
+#reader-header #header-title { font-size: 13px !important; font-weight: 600 !important; color: var(--ink) !important; }
+
+/* Chapter heading inside text-content */
+body:not(.global-dark) #text-content h2 {
+  font-size: 18px !important;
+  font-weight: 800 !important;
+  color: var(--ink) !important;
+  border-bottom: 1px solid var(--border-soft) !important;
+  border-top: none !important;
+  padding-bottom: 12px !important;
+  margin-bottom: 20px !important;
+  margin-top: 0 !important;
+  line-height: 1.7 !important;
+}
+
+/* Body text */
+body:not(.global-dark) #text-content {
+  font-size: 14.5px !important;
+  line-height: 2 !important;
+  color: var(--ink) !important;
+  text-align: justify !important;
+}
+
+/* Page slider accent — green thumb */
+#page-slider { accent-color: var(--green-deep) !important; }
+#reader-footer .bg-gray-50 { background: var(--card) !important; }
+#reader-footer .border-gray-100 { border-color: var(--border-soft) !important; }
+#reader-footer .text-gray-600 { color: var(--ink-2) !important; }
+#reader-footer .text-gray-400 { color: var(--ink-3) !important; }

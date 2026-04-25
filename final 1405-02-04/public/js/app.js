@@ -350,7 +350,7 @@ async function loadHomeLatestMedia() {
 // بنرهای صفحه اصلی
 // ====================================================
 async function loadBanners() {
-    ['after_slider','after_shortcuts','after_books','after_lectures'].forEach(sec => {
+    ['main','after_slider','after_shortcuts','after_books','after_lectures'].forEach(sec => {
         const el = document.getElementById('home-banner-' + sec);
         if (el) el.innerHTML = '';
     });
@@ -359,11 +359,11 @@ async function loadBanners() {
         if (!res.ok) return;
         const banners = await res.json();
         if (!Array.isArray(banners)) return;
-        const active = banners.filter(b => +b.active === 1 && b.image && b.image.trim().length > 2);
+        const active = banners.filter(b => (+b.active === 1 || b.active === true) && b.image && b.image.trim().length > 2);
         const s = window._siteSettings || {};
-        const padding = parseInt(s.banner_padding ?? '4');
+        const padding = parseInt(s.banner_padding ?? '16');
         const radius = parseInt(s.banner_radius ?? '16');
-        const height = parseInt(s.banner_height ?? '120');
+        const height = parseInt(s.banner_height ?? '130');
         const groups = {};
         active.forEach(b => {
             const sec = b.page_section || 'after_books';
@@ -373,11 +373,15 @@ async function loadBanners() {
         for (const [sec, items] of Object.entries(groups)) {
             const container = document.getElementById('home-banner-' + sec);
             if (!container) continue;
-            container.style.padding = '0 ' + padding + 'px';
+            container.style.paddingLeft = padding + 'px';
+            container.style.paddingRight = padding + 'px';
+            container.style.display = 'flex';
+            container.style.flexDirection = 'column';
+            container.style.gap = '12px';
             container.innerHTML = items.map(b => {
                 const onclick = b.link ? `onclick="handleBannerLink('${b.link.replace(/\\/g,'\\\\').replace(/'/g,"\\'")}');"` : '';
-                return `<div class="overflow-hidden shadow-sm border border-gray-100 cursor-pointer active:scale-[0.98] transition-transform" style="border-radius:${radius}px;" ${onclick}>
-                    <img src="${b.image}" class="w-full object-cover" style="max-height:${height}px;" alt="${b.title||''}">
+                return `<div style="border-radius:${radius}px;overflow:hidden;box-shadow:0 2px 8px rgba(42,32,24,0.08);cursor:pointer;border:1px solid var(--border-soft);" ${onclick}>
+                    <img src="${b.image}" alt="${b.title||''}" style="width:100%;height:${height}px;object-fit:cover;display:block;" onerror="this.parentElement.style.display='none'">
                 </div>`;
             }).join('');
         }
